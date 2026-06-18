@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swim_success_test_task/app/config.dart';
 import 'package:swim_success_test_task/app/navigation.dart';
+import 'package:swim_success_test_task/core/resource/theme.dart';
 
 class SwimSuccessTestTaskApp extends StatelessWidget {
   const SwimSuccessTestTaskApp({super.key});
@@ -11,7 +12,7 @@ class SwimSuccessTestTaskApp extends StatelessWidget {
       routerConfig: Navigation.router(),
       title: Config.appTitle,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      theme: AppTheme.darkTheme,
     );
   }
 }

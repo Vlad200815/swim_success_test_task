@@ -79,11 +79,13 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: ThemeColors.primary,
           foregroundColor: Colors.black,
+
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(30),
           ),
           textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+          minimumSize: const Size.fromHeight(56),
         ),
       ),
 

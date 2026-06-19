@@ -1,6 +1,31 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
+import 'package:swim_success_test_task/src/app/config.dart';
+import 'package:swim_success_test_task/src/core/resource/theme_colors.dart';
+
+extension PaceLevelX on PaceLevel {
+  String get label => switch (this) {
+    PaceLevel.beginner => 'Beginner',
+    PaceLevel.intermediate => 'Intermediate',
+    PaceLevel.advanced => 'Advanced',
+    PaceLevel.elite => 'Elite',
+  };
+
+  Color get color => switch (this) {
+    PaceLevel.beginner => Colors.white,
+    PaceLevel.intermediate => ThemeColors.primary, // minty
+    PaceLevel.advanced => const Color(0xFF4DA8FF), // bluish
+    PaceLevel.elite => const Color(0xFFFFC940), // golden
+  };
+
+  int get displayIndex => switch (this) {
+    PaceLevel.elite => 0,
+    PaceLevel.advanced => 1,
+    PaceLevel.intermediate => 2,
+    PaceLevel.beginner => 3,
+  };
+}
 
 extension ListExtension<T> on List<T>? {
   List<T> orEmpty() {

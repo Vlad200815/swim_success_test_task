@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:swim_success_test_task/app/navigation.dart';
-import 'package:swim_success_test_task/features/user_list/presentation/user_details/user_details_page.dart';
+import 'package:swim_success_test_task/src/app/navigation.dart';
+import 'package:swim_success_test_task/src/features/user_list/presentation/user_details/user_details_page.dart';
 
 class UserListPage extends StatelessWidget {
   const UserListPage({super.key});

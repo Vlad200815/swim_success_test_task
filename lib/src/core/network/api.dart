@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:swim_success_test_task/app/config.dart';
+import 'package:swim_success_test_task/src/app/config.dart';
 
 class Api {
   const Api();

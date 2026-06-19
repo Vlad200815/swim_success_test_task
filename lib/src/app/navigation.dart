@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:swim_success_test_task/features/pace_selector/presentation/pace_selector/pace_selector_page.dart';
-import 'package:swim_success_test_task/features/user_list/presentation/user_details/user_details_page.dart';
-import 'package:swim_success_test_task/features/user_list/presentation/user_list/user_list_page.dart';
+import 'package:swim_success_test_task/src/features/pace_selector/presentation/pace_selector/pace_selector_page.dart';
+import 'package:swim_success_test_task/src/features/user_list/presentation/user_details/user_details_page.dart';
+import 'package:swim_success_test_task/src/features/user_list/presentation/user_list/user_list_page.dart';
 
 class Navigation {
   ///

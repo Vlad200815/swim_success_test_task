@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:swim_success_test_task/core/network/dio_builder.dart';
+import 'package:swim_success_test_task/src/core/network/dio_builder.dart';
 
 final di = GetIt.instance;
 

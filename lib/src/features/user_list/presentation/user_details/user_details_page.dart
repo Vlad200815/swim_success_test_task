@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:swim_success_test_task/app/navigation.dart';
-import 'package:swim_success_test_task/core/extension/extensions.dart';
+import 'package:swim_success_test_task/src/app/navigation.dart';
+import 'package:swim_success_test_task/src/core/extension/extensions.dart';
 
 class UserDetailsPage extends StatelessWidget {
   final String userId;

@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:swim_success_test_task/app/config.dart';
-import 'package:swim_success_test_task/core/network/api.dart';
+import 'package:swim_success_test_task/src/app/config.dart';
+import 'package:swim_success_test_task/src/core/network/api.dart';
 
 class DioBuilder extends DioMixin implements Dio {
   final String contentType = Api.contentTypeJson;

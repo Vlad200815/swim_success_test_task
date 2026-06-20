@@ -4,6 +4,7 @@ import 'package:swim_success_test_task/src/features/user_list/data/datasources/r
 import 'package:swim_success_test_task/src/features/user_list/data/repositories/user_list_repository_impl.dart';
 import 'package:swim_success_test_task/src/features/user_list/domain/repositories/user_list_repository.dart';
 import 'package:swim_success_test_task/src/features/user_list/domain/usecases/fetch_all_users_usecase.dart';
+import 'package:swim_success_test_task/src/features/user_list/domain/usecases/fetch_user_by_id_usecase.dart';
 
 class UserListLocator {
   void inject() {
@@ -19,6 +20,11 @@ class UserListLocator {
     /// Get All Users
     di.registerLazySingleton<FetchAllUsersUseCase>(
       () => FetchAllUsersUseCase(userListRepository: di.get()),
+    );
+
+    /// Get User By Id
+    di.registerLazySingleton<FetchUserByIdUseCase>(
+          () => FetchUserByIdUseCase(userListRepository: di.get()),
     );
   }
 }

@@ -48,7 +48,6 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Container(
-        // Gives it a premium soft drop shadow against your deep navy background
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -61,12 +60,11 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         child: TextField(
           controller: _controller,
           onChanged: widget.onChanged,
-          style: theme.textTheme.bodyLarge, // Matches your primary text token
-          cursorColor: theme.colorScheme.primary, // Mint green cursor
+          style: theme.textTheme.bodyLarge,
+          cursorColor: theme.colorScheme.primary,
           textInputAction: TextInputAction.search,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            // Inherits structure smoothly from your inputDecorationTheme values
             prefixIcon: Padding(
               padding: const EdgeInsets.only(left: 4.0),
               child: Icon(
@@ -77,7 +75,6 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                 size: 22,
               ),
             ),
-            // Dynamic clear button to wipe text instantly
             suffixIcon: _showClearButton
                 ? IconButton(
                     icon: const Icon(Icons.clear_rounded, size: 20),

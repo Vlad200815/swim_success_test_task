@@ -17,4 +17,11 @@ abstract class UserListApiService {
 
   @GET(Api.urlUsers)
   Future<List<UserDto>> fetchAllUsers();
+
+  ///
+  /// GET USER BY ID
+  ///
+
+  @GET(Api.urlUserById)
+  Future<UserDto> getUserById({@Path(Api.id) required int userId});
 }

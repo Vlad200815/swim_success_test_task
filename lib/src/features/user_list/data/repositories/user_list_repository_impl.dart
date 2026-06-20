@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:swim_success_test_task/src/core/network/dio_exception_mapper.dart';
 import 'package:swim_success_test_task/src/core/network/failure.dart';
 import 'package:swim_success_test_task/src/features/user_list/data/datasources/remote/user_list_api_service.dart';
@@ -14,10 +13,7 @@ class UserListRepositoryImpl implements UserListRepository {
   @override
   Future<List<UserEntity>> fetchUsers() async {
     try {
-      debugPrint("Try to call fetchAllUsers");
-
       final result = await _userListApiService.fetchAllUsers();
-      debugPrint("Took result: $result");
 
       final List<UserEntity> users = result
           .map(
@@ -33,13 +29,32 @@ class UserListRepositoryImpl implements UserListRepository {
             ),
           )
           .toList();
-      debugPrint("Took mapped users: $users");
 
       return users;
     } on DioException catch (e) {
       throw DioExceptionMapper.mapDioException(e);
     } catch (e) {
-      debugPrint("Error is: $e");
+      throw const UnknownFailure();
+    }
+  }
+
+  @override
+  Future<UserEntity> fetchUserById({required int userId}) async {
+    try {
+      final result = await _userListApiService.getUserById(userId: userId);
+      return UserEntity(
+        id: result.id,
+        name: result.name,
+        username: result.username,
+        email: result.email,
+        address: result.address?.toEntity(),
+        phone: result.phone,
+        website: result.website,
+        company: result.company?.toEntity(),
+      );
+    } on DioException catch (e) {
+      throw DioExceptionMapper.mapDioException(e);
+    } catch (e) {
       throw const UnknownFailure();
     }
   }

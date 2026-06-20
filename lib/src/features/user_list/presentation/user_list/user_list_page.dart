@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:swim_success_test_task/src/app/navigation.dart';
 import 'package:swim_success_test_task/src/core/di/di.dart';
 import 'package:swim_success_test_task/src/core/extension/extensions.dart';
-import 'package:swim_success_test_task/src/features/user_list/presentation/widgets/custom_lable.dart';
-import 'package:swim_success_test_task/src/features/user_list/presentation/widgets/user_card.dart';
+import 'package:swim_success_test_task/src/features/user_list/presentation/user_details/user_details_page.dart';
+import 'package:swim_success_test_task/src/features/user_list/presentation/user_list/widgets/widgets.dart';
 
 import 'bloc/user_list_bloc.dart';
 
@@ -33,7 +33,16 @@ class UserListPage extends StatelessWidget {
                 },
 
                 child: CustomScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
                   slivers: [
+                    SliverToBoxAdapter(
+                      child: CustomSearchBar(
+                        onChanged: (query) => context.read<UserListBloc>().add(
+                          SearchUsersEvent(query: query),
+                        ),
+                      ),
+                    ),
+
                     SliverList.separated(
                       separatorBuilder: (context, index) =>
                           const SizedBox(height: 10),
@@ -44,6 +53,10 @@ class UserListPage extends StatelessWidget {
                           name: user.name.orEmpty(),
                           email: user.email.orEmpty(),
                           phone: user.phone.orEmpty(),
+                          onTap: () => UserDetailsPage.open(
+                            context,
+                            id: user.id.toString(),
+                          ),
                         );
                       },
                     ),

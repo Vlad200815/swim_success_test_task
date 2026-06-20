@@ -7,9 +7,11 @@ class Api {
   ///
   /// Config
   ///
+  static const String id = "id";
 
   static const urlPace = "/posts";
   static const urlUsers = "/users";
+  static const urlUserById = "/users/{$id}";
 
   //
   // General
@@ -20,7 +22,7 @@ class Api {
 
   // Create a new instance everytime it is in use
   // As BaseOption is mutable
-  static get baseDioOptions => BaseOptions(
+  static BaseOptions get baseDioOptions => BaseOptions(
     baseUrl: Config.baseUrl,
     contentType: contentTypeJson,
     connectTimeout: baseTimeOut,

@@ -2,7 +2,7 @@ part of 'pace_selector_cubit.dart';
 
 enum PaceSubmissionStatus { initial, loading, success, failure }
 
-class PaceSelectorState {
+class PaceSelectorState extends Equatable {
   final Duration time;
   final double sliderValue;
   final PaceLevel level;
@@ -38,4 +38,13 @@ class PaceSelectorState {
     sliderValue: 1,
     level: PaceLevel.beginner,
   );
+
+  @override
+  List<Object?> get props => [
+    time,
+    sliderValue,
+    level,
+    submissionStatus,
+    submissionError,
+  ];
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swim_success_test_task/src/app/config.dart';
 import 'package:swim_success_test_task/src/core/network/failure.dart';

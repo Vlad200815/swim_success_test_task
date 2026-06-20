@@ -20,6 +20,9 @@ class UserListBloc extends Bloc<UserListEvent, UserListState> {
   ) async {
     emit(UserListLoadingState());
     try {
+      if (event.isRefresh)
+        await Future.delayed(const Duration(milliseconds: 600));
+
       final List<UserEntity> users = await _fetchAllUsersUseCase.perform();
       debugPrint("Users: $users");
       emit(UserListSuccessState(users: users));

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomLable extends StatelessWidget {
-  const CustomLable({super.key});
+class CustomLabel extends StatelessWidget {
+  const CustomLabel({super.key});
 
   @override
   Widget build(BuildContext context) {

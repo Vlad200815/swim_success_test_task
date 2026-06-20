@@ -6,6 +6,7 @@ import 'package:swim_success_test_task/src/core/di/di.dart';
 import 'package:swim_success_test_task/src/core/extension/extensions.dart';
 import 'package:swim_success_test_task/src/features/user_list/presentation/user_details/user_details_page.dart';
 import 'package:swim_success_test_task/src/features/user_list/presentation/user_list/widgets/widgets.dart';
+import 'package:swim_success_test_task/src/features/user_list/presentation/widgets/custom_label.dart';
 
 import 'bloc/user_list_bloc.dart';
 
@@ -60,7 +61,7 @@ class UserListPage extends StatelessWidget {
                         );
                       },
                     ),
-                    SliverToBoxAdapter(child: CustomLable()),
+                    SliverToBoxAdapter(child: CustomLabel()),
                   ],
                 ),
               ),

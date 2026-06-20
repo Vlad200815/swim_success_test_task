@@ -2,13 +2,18 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swim_success_test_task/src/app/config.dart';
+import 'package:swim_success_test_task/src/core/network/failure.dart';
+import 'package:swim_success_test_task/src/features/pace_selector/domain/usecases/post_pace_seconds_usecase.dart';
 
 part "pace_selector_state.dart";
 
 class PaceSelectorCubit extends Cubit<PaceSelectorState> {
-  PaceSelectorCubit({this.debounceDuration = const Duration(milliseconds: 400)})
-    : super(PaceSelectorState.initial());
+  PaceSelectorCubit({
+    this.debounceDuration = const Duration(milliseconds: 400),
+    required this._postPaceSecondsUseCase,
+  }) : super(PaceSelectorState.initial());
 
+  final PostPaceSecondsUseCase _postPaceSecondsUseCase;
   final Duration debounceDuration;
   Timer? _debounce;
 
@@ -53,6 +58,32 @@ class PaceSelectorCubit extends Cubit<PaceSelectorState> {
   void setFromSliderValue(double value) {
     _debounce?.cancel();
     _applyTime(Duration(seconds: valueToSeconds(value)));
+  }
+
+  /// Post Pace Seconds
+  Future<void> postPaceSeconds() async {
+    _debounce?.cancel();
+
+    emit(state.copyWith(submissionStatus: PaceSubmissionStatus.loading));
+
+    try {
+      await _postPaceSecondsUseCase.perform(state.time.inSeconds);
+      emit(state.copyWith(submissionStatus: PaceSubmissionStatus.success));
+    } on Failure catch (f) {
+      emit(
+        state.copyWith(
+          submissionStatus: PaceSubmissionStatus.failure,
+          submissionError: f.message,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          submissionStatus: PaceSubmissionStatus.failure,
+          submissionError: 'Something went wrong. Please try again.',
+        ),
+      );
+    }
   }
 
   void _applyTime(Duration time) {
